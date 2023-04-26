@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--  importing google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400;500&family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("zk-Ows5VmqpkrOz7Z");
+      })();
+    </script>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="index.css" />
+    <title>Weather Info</title>
+  </head>
+
+  <body>
+    <!-- <div class="nav">NAVBAR</div> -->
+
+    <div class="wrapper">
+      <div class="mainBox">
+        <div class="box-1">
+          <h1>Weather App</h1>
+          <div class="boxo">
+            <div class="tab-container">
+              <p class="tab" data-userWeather>Local Weather</p>
+              <p class="tab" data-searchWeather>Search Weather</p>
+            </div>
+
+            <div class="weather-container">
+              <!-- Grant Location Container -->
+              <div class="sub-container grantLocation-container">
+                <img
+                  src="location.jpg"
+                  alt=" "
+                  width="80"
+                  height="80"
+                  loading="lazy"
+                />
+                <p>Grant Location Access</p>
+                <p>Allow Access to Get Weather Information</p>
+                <button class="btn" data-grantAccess>Grant Access</button>
+              </div>
+
+              <!-- Search Weather Wala Container -->
+
+              <form action="" class="form-container" data-searchForm>
+                <input
+                  type="text"
+                  placeholder="Search For City...."
+                  data-searchInput
+                />
+                <button class="btn" type="submit">
+                  <img
+                    src="location.jpg"
+                    alt=""
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />
+                </button>
+              </form>
+            </div>
+
+            <!-- Loading Screen Container -->
+
+            <div class="loading-container">
+              <img src="/backs/loading.gif" alt="" width="150" height="150" />
+              <p>Loading</p>
+            </div>
+
+            <!-- Show weather info container for user default  and entered city  -->
+
+            <div class="sub-container userInfo-container">
+              <!-- City name and flag will be displayed dynamically -->
+              <div class="name">
+                <p data-cityName></p>
+
+                <!-- Image js ki help se dynamically provide krenge -->
+                <img data-countryIcon />
+              </div>
+
+              <!-- Tempreture Description  and Icon will be update dynamically -->
+              <p data-weatherDesc></p>
+
+              <img data-weatherIcon />
+
+              <p data-temp></p>
+              <div>
+                <button class="convert btn">°C/°F</button>
+                <button class="view btn">view</button>
+              </div>
+
+              <!-- 3 Bottom card designing -->
+              <div class="parameter-container" data-parameter>
+                <!-- Card-1 -->
+                <div class="parameter">
+                  <img src="wind.jpg" alt="" width="" height="" />
+                  <p>Wind Speed</p>
+                  <p data-windSpeed></p>
+                </div>
+
+                <!-- Card-2 -->
+                <div class="parameter">
+                  <img src="humidity.jpg" alt="" />
+                  <p>Humidity</p>
+                  <p data-humidity></p>
+                </div>
+
+                <!-- Card-3 -->
+                <div class="parameter">
+                  <img src="clouds.jpg" alt="" />
+                  <p>Clouds</p>
+                  <p data-cloud></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
+      <div><button class="show-modal float btn">Feedback</button></div>
+
+      <div class="modal hidden">
+        <form>
+          <button class="close-modal">&times;</button>
+          <h2 style="color: black">Please provide feedback</h2>
+          <input type="email" class="mail" placeholder="Email" />
+          <br />
+          <input type="text" class="feedback" placeholder="Feedback" />
+          <br />
+          <button type="submit" class="feedbackBtn">Send</button>
+        </form>
+      </div>
+      <div class="overlay hidden"></div>
+    </div>
+    <footer style="text-align: center">
+      <p>© 2023 Copyright: Akshay and Ashish</p>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>
